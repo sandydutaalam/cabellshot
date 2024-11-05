@@ -27,9 +27,9 @@
                             @csrf
                             <input type="email" name="email" placeholder="E-mail" required>
                             <input type="password" name="password" placeholder="Password" required>
-                            <div class="forgot">
+                            {{-- <div class="forgot">
                                 <a href="{{ route('reset-password') }}">Forgot Password?</a>
-                            </div>
+                            </div> --}}
                             <button class="btn1">LOGIN NOW</button>
                         </form>
                     </div>

@@ -126,10 +126,10 @@
                         </ul>
                     </li>
 
-                    <li>
+                    {{-- <li>
                         <a href="{{ route('admin.filter-date.index') }}"><i class="si si-vector"></i><span
                                 class="sidebar-mini-hide">B/w Dates Report</span></a>
-                    </li>
+                    </li> --}}
 
                     <li>
                         <a href="{{ route('admin.search-booking.index') }}"><i class="si si-magnifier"></i><span

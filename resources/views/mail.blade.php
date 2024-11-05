@@ -11,12 +11,13 @@
     </div>
     <div class="contact">
         <div class="container">
-            <div class="agile-contact-form">
+             <div class="agile-contact-form">
                 <div class="col-md-6 contact-form-left">
                     <div class="w3layouts-contact-form-top">
                         <h3>Get in touch</h3>
-                        <p>Kami di Cobell Shot sangat ingin mendengar dari Anda! Apakah Anda memiliki pertanyaan...</p>
+                        <p>Kami di Cabell Shot sangat ingin mendengar dari Anda! Apakah Anda memiliki pertanyaan?</p>
                     </div>
+                    
                     <div class="agileits-contact-address">
                         <ul>
                             <li><i class="fa fa-phone" aria-hidden="true"></i> <span>+{{ $page->phone_number }}</span></li>
@@ -25,7 +26,9 @@
                             </li>
                         </ul>
                     </div>
+
                 </div>
+                
                 <div class="col-md-6 contact-form-right">
                     <div class="contact-form-top">
                         <h3>Send us a message</h3>
@@ -33,16 +36,21 @@
                     <div class="agileinfo-contact-form-grid">
                         <form action="{{ route('mail.submit') }}" method="post">
                             @csrf
-                            <input placeholder="Full Name" name="name" type="text" required="true">
+                            <input placeholder="Full Name" name="name" type="text">
                             <input placeholder="Email" name="email" type="email" required="true">
                             <textarea name="message" placeholder="Message" required></textarea>
                             <label>Rating (1-5):</label>
-                            <select name="rating" required="true">
-                                @for ($i = 1; $i <= 5; $i++)
+                            <select name="rating">
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                                {{-- @for ($i = 1; $i <= 5; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
-                                @endfor
+                                @endfor --}}
                             </select>
-                            <textarea name="review" placeholder="Write your review" required="true"></textarea>
+                            <textarea name="review" placeholder="Write your review"></textarea>
                             <button class="btn1" name="submit">Submit</button>
                         </form>
                     </div>

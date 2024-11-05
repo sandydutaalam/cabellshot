@@ -1395,7 +1395,7 @@ h2.typoh2{
     display: block;
     margin: 1em 0;
 }
-.agileits-contact-address ul li i.fa.fa-phone,.agileits-contact-address ul li i.fa.fa-map-marker {
+.agileits-contact-address ul li i.fa.fa-phone,.agileits-contact-address ul li i.fa.fa-map-marker,.agileits-contact-address ul li i.fa.fa-envelope {
     height: 40px;
     width: 40px;
     background: #0602ff;

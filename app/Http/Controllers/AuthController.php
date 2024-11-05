@@ -50,7 +50,7 @@ class AuthController extends Controller
             if ($user->role == 'admin') {
                 return redirect()->route('admin.dashboard')->with('success', 'Login Berhasil');
             } elseif ($user->role == 'user') {
-                return redirect()->route('home')->with('success', 'Login Berhasil');
+                return redirect()->route('home')->with('success', 'Login Berhasil' );
             }
         }
         return back()->withErrors(['email' => 'Invalid credentials']);

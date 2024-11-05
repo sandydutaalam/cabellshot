@@ -42,7 +42,7 @@ class HomeController extends Controller
             'email' => 'required|email',
             'message' => 'required',
             'rating' => 'required|integer|min:1|max:5',
-            'review' => 'required|string',
+            'review' => 'nullable|string',
         ]);
 
         Contact::create([

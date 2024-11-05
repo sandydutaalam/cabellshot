@@ -56,8 +56,8 @@
                 <div class="container">
                     <div class="w3-banner-info">
                         <div class="w3l-banner-text">
-                            <h2>Create Your Memory</h2>
-                            <p>We capture your special day</p>
+                            <h2>Cabell Shot</h2>
+                            <p>Keep your memories in a picture</p>
                         </div>
                     </div>
                 </div>
@@ -67,10 +67,10 @@
                     <div class="banner-address">
                         <div class="row">
                             <div class="col-md-4 banner-address-left">
-                                <p><i class="fa fa-map-marker" aria-hidden="true"></i> Alamat perusahaan di sini</p>
+                                <p><i class="fa fa-map-marker" aria-hidden="true"></i>Universitas Tarumanagara</p>
                             </div>
                             <div class="col-md-4 banner-address-left">
-                                <p><i class="fa fa-envelope" aria-hidden="true"></i> email@domain.com</p>
+                                <p><i class="fa fa-envelope" aria-hidden="true"></i>sandydutaa@cabellshot.com</p>
                             </div>
                             <div class="col-md-4 banner-address-left">
                                 <p><i class="fa fa-phone" aria-hidden="true"></i> +123 456 789</p>
@@ -93,11 +93,11 @@
                         <div class="w3-agileits-bottom-left">
                             <div class="w3-agileits-bottom-left-text">
                                 <h3>Abadikan Momen Berharga Anda!</h3>
-                                <p>Setiap momen adalah bagian dari kisah hidup Anda yang tak ternilai. Di Cobell Shot, kami
+                                <p>Setiap momen adalah bagian dari kisah hidup Anda yang tak ternilai. Di Cabell Shot, kami
                                     siap membantu Anda mengabadikan kenangan berharga dengan sentuhan profesional dan
                                     kreatif. Mulai dari pernikahan, pre-wedding, hingga potret keluarga, kami hadir untuk
-                                    memastikan setiap gambar berbicara. Hubungi kami sekarang untuk sesi pemotretan yang tak
-                                    terlupakan!</p>
+                                    memastikan setiap gambar berbicara. Hubungi kami sekarang untuk sesi pemotretan yang tak akan
+                                    terlupakan oleh Anda!</p>
                             </div>
                         </div>
                     </div>
@@ -105,11 +105,11 @@
                         <div class="w3-agileits-bottom-left w3-agileits-bottom-right">
                             <div class="w3-agileits-bottom-left-text">
                                 <h3>Foto yang Bercerita, Kenangan yang Abadi!</h3>
-                                <p>Setiap klik kamera kami menciptakan cerita unik yang layak untuk dikenang. Di Cobell
+                                <p>Setiap klik kamera kami menciptakan cerita unik yang layak untuk dikenang. Di Cabell
                                     Shot, kami percaya bahwa foto bukan hanya gambar, tetapi juga kenangan. Dengan
                                     pengalaman dan teknik terkini, kami siap menangkap momen spesial Anda dengan keindahan
                                     yang tak terlupakan. Jangan lewatkan kesempatan untuk memiliki karya seni yang bisa Anda
-                                    hargai selamanya. Jadwalkan sesi pemotretan Anda hari ini!</p>
+                                    hargai selamanya. Jadwalkan sesi pemotretan sekarang!</p>
                             </div>
                         </div>
                     </div>
@@ -145,7 +145,7 @@
         <div class="container">
             <h2>OUR REVIEW</h2>
             <div class="review-list">
-                @if ($reviews->count() > 0)
+                @if ($reviews->count() >= 0)
                     @foreach ($reviews as $review)
                         <div class="review-item">
                             <h4>{{ $review->name }}</h4>

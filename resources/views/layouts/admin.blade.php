@@ -2,7 +2,7 @@
 <html lang="en" class="no-focus">
 
 <head>
-    <title>Online CabellShots Booking System - Admin Dashboard</title>
+    <title>Online Cabell Shot Booking System - Admin Dashboard</title>
 
     <link rel="stylesheet" id="css-main" href="{{ asset('admin/css/codebase.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/js/plugins/datatables/dataTables.bootstrap4.min.css') }}">

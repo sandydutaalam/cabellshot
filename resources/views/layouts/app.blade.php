@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Online CabellShots Booking System</title>
+    <title>Online Cabell Shot Booking System</title>
 
     <!-- Bootstrap CSS -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
@@ -55,7 +55,7 @@
     {{-- Footer --}}
     <div class="agileits-w3layouts">
         <div class="container">
-            <p>© 2024 Online CabellShot Booking System. All rights reserved | </p>
+            <p>© 2024 Online Cabell Shot Booking System. All rights reserved | sandydutaa</p>
         </div>
     </div>
 
