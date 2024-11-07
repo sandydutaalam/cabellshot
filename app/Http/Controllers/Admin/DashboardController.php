@@ -18,6 +18,7 @@ class DashboardController extends Controller
         $totalUnreadQueries = Contact::whereNull('is_read')->count();
         $totalReadQueries = Contact::where('is_read', '1')->count();
         $totalNewBookings = Booking::whereNull('status')->count();
+        $allBookings = Booking::count();
         $totalApprovedBookings = Booking::where('status', 'Approved')->count();
         $totalCancelledBookings = Booking::where('status', 'Cancelled')->count();
         $totalServices = Service::count();
@@ -27,6 +28,7 @@ class DashboardController extends Controller
             'totalUnreadQueries',
             'totalReadQueries',
             'totalNewBookings',
+            'allBookings',
             'totalApprovedBookings',
             'totalCancelledBookings',
             'totalServices',

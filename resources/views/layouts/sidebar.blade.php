@@ -94,7 +94,7 @@
 
                     <li>
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i
-                                class="si si-layers"></i><span class="sidebar-mini-hide">Pages</span></a>
+                                class="si si-layers"></i><span class="sidebar-mini-hide">About and Contact</span></a>
                         <ul>
                             <li><a href="{{ route('admin.pages.about') }}">About Us</a></li>
                             <li><a href="{{ route('admin.pages.contact') }}">Contact Us</a></li>
@@ -114,13 +114,13 @@
 
                     <li>
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-user"></i><span
-                                class="sidebar-mini-hide">Contact Us Queries</span></a>
+                                class="sidebar-mini-hide">Contact Us </span></a>
                         <ul>
                             <li>
-                                <a href="{{ route('admin.contact-query.unread') }}">Unread Queries</a>
+                                <a href="{{ route('admin.contact-query.unread') }}">Unread msg</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.contact-query.read') }}">Read Queries</a>
+                                <a href="{{ route('admin.contact-query.read') }}">Read msg</a>
                             </li>
 
                         </ul>

@@ -28,13 +28,13 @@
             </a>
         </div>
         <div class="col-6 col-md-4 col-xl-3">
-            <a class="block text-center" href="{{ route('admin.bookings.new') }}">
+            <a class="block text-center" href="{{ route('admin.bookings.all') }}">
                 <div class="block-content ribbon ribbon-bookmark ribbon-crystal ribbon-left bg-gd-sea">
-                    <div class="ribbon-box">{{ $totalNewBookings }}</div>
+                    <div class="ribbon-box">{{ $allBookings }}</div>
                     <p class="mt-5">
                         <i class="si si-pencil fa-3x text-white-op"></i>
                     </p>
-                    <p class="font-w600 text-white">Total New Booking</p>
+                    <p class="font-w600 text-white">Total Booking</p>
                 </div>
             </a>
         </div>

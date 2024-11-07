@@ -38,10 +38,10 @@ class HomeController extends Controller
     public function submit_mail(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'nullable|string|max:255',
             'email' => 'required|email',
             'message' => 'required',
-            'rating' => 'required|integer|min:1|max:5',
+            'rating' => 'nullable|integer|min:1|max:5',
             'review' => 'nullable|string',
         ]);
 

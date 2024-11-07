@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(callback: function () {
     Route::get('/bookings/create/{id}', [BookController::class, 'create'])->name('booking.create');
     Route::post('/booking/store/{id}', [BookController::class, 'store'])->name('booking.store');
     Route::get('/booking/view/{id}', [BookController::class, 'view'])->name('booking.view');
-    Route::get('/cities', [CityController::class, 'index'])->name('cities');
+    // Route::get('/cities', [CityController::class, 'index'])->name('cities');
 
     // Admin routes
     Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function () {

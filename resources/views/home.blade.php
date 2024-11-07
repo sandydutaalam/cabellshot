@@ -145,7 +145,7 @@
         <div class="container">
             <h2>OUR REVIEW</h2>
             <div class="review-list">
-                @if ($reviews->count() >= 0)
+                @if ($reviews->count()>0)
                     @foreach ($reviews as $review)
                         <div class="review-item">
                             <h4>{{ $review->name }}</h4>

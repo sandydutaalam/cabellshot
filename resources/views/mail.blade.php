@@ -36,21 +36,21 @@
                     <div class="agileinfo-contact-form-grid">
                         <form action="{{ route('mail.submit') }}" method="post">
                             @csrf
-                            <input placeholder="Full Name" name="name" type="text">
+                            {{-- <input placeholder="Full Name" name="name" type="text"> --}}
                             <input placeholder="Email" name="email" type="email" required="true">
                             <textarea name="message" placeholder="Message" required></textarea>
-                            <label>Rating (1-5):</label>
+                            {{-- <label>Rating (1-5):</label>
                             <select name="rating">
                             <option value="5">5</option>
                             <option value="4">4</option>
                             <option value="3">3</option>
                             <option value="2">2</option>
                             <option value="1">1</option>
-                                {{-- @for ($i = 1; $i <= 5; $i++)
+                                @for ($i = 1; $i <= 5; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
-                                @endfor --}}
+                                @endfor
                             </select>
-                            <textarea name="review" placeholder="Write your review"></textarea>
+                            <textarea name="review" placeholder="Write your review"></textarea> --}}
                             <button class="btn1" name="submit">Submit</button>
                         </form>
                     </div>
