@@ -49,6 +49,8 @@ Route::middleware(['auth'])->group(callback: function () {
     Route::get('/bookings/create/{id}', [BookController::class, 'create'])->name('booking.create');
     Route::post('/booking/store/{id}', [BookController::class, 'store'])->name('booking.store');
     Route::get('/booking/view/{id}', [BookController::class, 'view'])->name('booking.view');
+
+    Route::post('review/{bookingId}', [BookController::class, 'review'])->name('review.store');
     // Route::get('/cities', [CityController::class, 'index'])->name('cities');
 
     // Admin routes
@@ -88,7 +90,7 @@ Route::middleware(['auth'])->group(callback: function () {
 
             Route::get('detail/{id}', 'detail')->name('detail');
             Route::post('addPhotographer/{id}', 'addPhotographer')->name('addPhotographer');
-            Route::delete('removePhotographer/{id}/{photographer_id}', 'removePhotographer')->name('removePhotographer');
+            Route::delete('removePhotographer/{event_id}/{id}', 'removePhotographer')->name('removePhotographer');
 
             Route::get('/create', 'create')->name('create');
             Route::post('/', 'store')->name('store');

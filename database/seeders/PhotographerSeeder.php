@@ -13,19 +13,25 @@ class PhotographerSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('event_type_photographer')->insert([
+        $photograpers = [
             [
+                'name' => 'Panji',
                 'event_type_id' => 1,
-                'user_id' => 1,
             ],
             [
+                'name' => 'Rafael',
                 'event_type_id' => 2,
-                'user_id' => 2,
             ],
             [
+                'name' => 'Arbi',
                 'event_type_id' => 3,
-                'user_id' => 3,
             ],
-        ]);
+            [
+                'name' => 'Satria',
+                'event_type_id' => 3,
+            ],
+        ];
+
+        DB::table('photographers')->insert($photograpers);
     }
 }

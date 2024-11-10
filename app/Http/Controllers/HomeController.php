@@ -13,7 +13,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $reviews = Contact::all();
+        $reviews = Review::with('user')->get();
         return view('home', compact('reviews'));
     }
 
@@ -66,6 +66,4 @@ class HomeController extends Controller
         // Kembalikan view dengan data layanan dan tipe acara
         return view('services_filter', compact('services', 'eventType'));
     }
-
-
 }

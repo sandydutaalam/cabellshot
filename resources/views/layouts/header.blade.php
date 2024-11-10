@@ -66,8 +66,8 @@
             <div class="collapse navbar-collapse nav-wil">
                 <ul style="color: white;">
                     @guest
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
+                        <li><a href="{{ route('login') }}" style="color: white">Login</a></li>
+                        <li><a href="{{ route('register') }}" style="color: white">Register</a></li>
                     @endguest
                 </ul>
             </div>

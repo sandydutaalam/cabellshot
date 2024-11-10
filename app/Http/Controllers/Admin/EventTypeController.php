@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\EventType;
+use App\Models\Photographer;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -67,28 +68,38 @@ class EventTypeController extends Controller
 
     public function addPhotographer(Request $request, $id)
     {
-        $event_type = EventType::findOrFail($id);
+        // $event_type = EventType::findOrFail($id);
 
         // Validasi input
         $request->validate([
-            'user_id' => 'required|exists:users,id',
+            'name' => 'required',
         ]);
+        // check name and event_type_id if exists
+        $photographer = Photographer::where('name', $request->name)
+            ->where('event_type_id', $id)
+            ->first();
 
-        // Tambahkan photographer ke event type
-        $event_type->photographers()->attach($request->input('user_id'));
+        if ($photographer) {
+            return redirect()->route('admin.event-types.detail', $id)
+                ->with('error', 'Photographer already exists!');
+        }
+
+
+        Photographer::create([
+            'name' => $request->name,
+            'event_type_id' => $id,
+        ]);
 
         return redirect()->route('admin.event-types.detail', $id)
             ->with('success', 'Photographer added successfully!');
     }
 
-    public function removePhotographer($event_type_id, $user_id)
+    public function removePhotographer($event_id, $id)
     {
-        $event_type = EventType::findOrFail($event_type_id);
+        Photographer::findOrFail($id)->delete();
 
-        // Hapus photographer dari event type
-        $event_type->photographers()->detach($user_id);
 
-        return redirect()->route('admin.event-types.detail', $event_type_id)
+        return redirect()->route('admin.event-types.detail', $event_id)
             ->with('success', 'Photographer removed successfully!');
     }
 }

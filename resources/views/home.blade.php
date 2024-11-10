@@ -96,7 +96,8 @@
                                 <p>Setiap momen adalah bagian dari kisah hidup Anda yang tak ternilai. Di Cabell Shot, kami
                                     siap membantu Anda mengabadikan kenangan berharga dengan sentuhan profesional dan
                                     kreatif. Mulai dari pernikahan, pre-wedding, hingga potret keluarga, kami hadir untuk
-                                    memastikan setiap gambar berbicara. Hubungi kami sekarang untuk sesi pemotretan yang tak akan
+                                    memastikan setiap gambar berbicara. Hubungi kami sekarang untuk sesi pemotretan yang tak
+                                    akan
                                     terlupakan oleh Anda!</p>
                             </div>
                         </div>
@@ -141,23 +142,98 @@
     </div>
 
     <!-- Review Section -->
-    <div class="reviews">
+
+
+    <style>
+        /* Add some basic styling to the review section */
+        .reviews {
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        .review-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .review-item {
+            width: 300px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-item:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Style the rating stars */
+        .rating {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+
+        .rating .star {
+            margin-right: 5px;
+        }
+
+        .rating .star.filled {
+            color: #FFD700;
+        }
+
+        /* Style the review text */
+        .review-item h4 {
+            font-weight: bold;
+            margin-top: 0;
+        }
+
+        .review-item p {
+            margin-bottom: 10px;
+        }
+
+        .review-item .small {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Add some space between reviews */
+        .review-item+.review-item {
+            margin-top: 20px;
+        }
+    </style>
+
+    <!-- The HTML code remains the same -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <div class="py-5 reviews">
         <div class="container">
-            <h2>OUR REVIEW</h2>
+            <h2 class="mb-5 text-center">Our Reviews</h2>
             <div class="review-list">
-                @if ($reviews->count()>0)
+                @if ($reviews->count() > 0)
                     @foreach ($reviews as $review)
-                        <div class="review-item">
-                            <h4>{{ $review->name }}</h4>
-                            <p>Rating: {{ $review->rating }} / 5</p>
-                            <p>{{ $review->review }}</p>
+                        <div class="p-3 mb-4 border rounded shadow-sm review-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="mb-1">{{ $review->name }}</h4>
+                                <div class="rating">
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        <span class="star {{ $i <= $review->rating ? 'filled' : '' }}">&#9733;</span>
+                                    @endfor
+                                </div>
+                            </div>
+                            <p class="small text-muted">Rating: {{ $review->rating }} / 5</p>
+                            <p class="mt-2">{{ $review->comment }}</p>
                         </div>
-                        <hr>
                     @endforeach
                 @else
-                    <p>No reviews yet.</p>
+                    <p class="text-center text-muted">No reviews yet.</p>
                 @endif
             </div>
         </div>
     </div>
+
+
 @endsection

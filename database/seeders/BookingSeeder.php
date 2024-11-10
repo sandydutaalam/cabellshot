@@ -16,6 +16,7 @@ class BookingSeeder extends Seeder
                 'user_id' => 3,
                 'event_type_id' => 1,
                 'number_of_guest' => 200,
+                'photographer_id' => 1,
 
                 'message' => 'rytriyu\r\nuytuyi\r\n\r\njoyuutuyfh',
                 'booking_date' => '2024-02-17',
@@ -32,7 +33,7 @@ class BookingSeeder extends Seeder
                 'user_id' => 4,
                 'event_type_id' => 2,
                 'number_of_guest' => 200,
-
+                'photographer_id' => 1,
                 'message' => 'NA',
                 'booking_date' => '2024-02-20',
                 'remark' => 'Your booking is cancelled',
@@ -48,7 +49,7 @@ class BookingSeeder extends Seeder
                 'user_id' => 5,
                 'event_type_id' => 2,
                 'number_of_guest' => 25,
-
+                'photographer_id' => 1,
                 'message' => 'NA',
                 'booking_date' => '2024-02-27',
                 'remark' => 'Approved',
@@ -64,7 +65,7 @@ class BookingSeeder extends Seeder
                 'user_id' => 5,
                 'event_type_id' => 1,
                 'number_of_guest' => 20,
-
+                'photographer_id' => 1,
                 'message' => 'NA',
                 'booking_date' => '2024-03-14',
                 'remark' => 'Okai',
@@ -80,7 +81,7 @@ class BookingSeeder extends Seeder
                 'user_id' => 5,
                 'event_type_id' => 3,
                 'number_of_guest' => 4,
-
+                'photographer_id' => 1,
                 'message' => 'Let\'s go',
                 'booking_date' => '2024-10-20',
                 'remark' => null,

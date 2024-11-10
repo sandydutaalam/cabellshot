@@ -66,12 +66,13 @@
                         @csrf
                         <div class="form-group">
                             <label for="user_id">Select Photographer:</label>
-                            <select name="user_id" id="user_id" class="form-control">
+                            {{-- <select name="user_id" id="user_id" class="form-control">
                                 <option value="">-- Select Photographer --</option>
                                 @foreach ($users as $user)
                                     <option value="{{ $user->id }}">{{ $user->name }} ({{ $user->email }})</option>
                                 @endforeach
-                            </select>
+                            </select> --}}
+                            <input type="text" name="name" id="" class="form-control">
                         </div>
                         @error('user_id')
                             <div class="text-danger">{{ $message }}</div>

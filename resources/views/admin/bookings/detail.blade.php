@@ -78,6 +78,23 @@
                                 {{ $booking->photographer->name }}
                             </td>
                         </tr>
+
+                        <tr>
+                            <th>Review</th>
+                            @if ($booking->review != null)
+                                <td>
+                                    Comment : {{ $booking->review->comment }}
+                                    Rating : {{ $booking->review->rating }} / 5
+                                </td>
+                            @else
+                                <td>
+                                    No Review Yet
+                                </td>
+                            @endif
+
+
+                        </tr>
+
                     </table>
 
                     @if ($booking->status == 'Pending')

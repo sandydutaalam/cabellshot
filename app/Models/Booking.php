@@ -25,6 +25,11 @@ class Booking extends Model
 
     public function photographer()
     {
-        return $this->belongsTo(User::class, 'photographer_id');
+        return $this->belongsTo(Photographer::class, 'photographer_id');
+    }
+
+    public function review()
+    {
+        return $this->hasOne(Review::class);
     }
 }

@@ -20,8 +20,11 @@ return new class extends Migration
             $table->foreignId('event_type_id')->constrained('event_types')->onDelete('cascade');
 
             // unsigned integer
-            $table->unsignedBigInteger('photographer_id')->nullable();
-            $table->foreign('photographer_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->unsignedBigInteger('photographer_id')->nullable();
+            // $table->foreign('photographer_id')->references('id')->on('photographers')->onDelete('cascade');
+
+            $table->foreignId('photographer_id')->constrained('photographers')->onDelete('cascade');
+            $table->boolean('is_reviewed')->default(false);
 
             $table->integer('number_of_guest')->nullable();
             $table->integer('state_id')->nullable();

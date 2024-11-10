@@ -16,7 +16,7 @@
                 <div class="col-md-6 contact-form-left">
 
                     <div class="agileits-contact-address">
-                        <img src="images/LOGO.jpg" alt="" height="500" width="500">
+                        <img src="images/logocabell.png" alt="" height="400" width="400">
                     </div>
                 </div>
                 <div class="col-md-6 contact-form-right">

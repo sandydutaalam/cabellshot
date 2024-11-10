@@ -11,13 +11,13 @@
     </div>
     <div class="contact">
         <div class="container">
-             <div class="agile-contact-form">
+            <div class="agile-contact-form">
                 <div class="col-md-6 contact-form-left">
                     <div class="w3layouts-contact-form-top">
                         <h3>Get in touch</h3>
                         <p>Kami di Cabell Shot sangat ingin mendengar dari Anda! Apakah Anda memiliki pertanyaan?</p>
                     </div>
-                    
+
                     <div class="agileits-contact-address">
                         <ul>
                             <li><i class="fa fa-phone" aria-hidden="true"></i> <span>+{{ $page->phone_number }}</span></li>
@@ -28,7 +28,7 @@
                     </div>
 
                 </div>
-                
+
                 <div class="col-md-6 contact-form-right">
                     <div class="contact-form-top">
                         <h3>Send us a message</h3>
