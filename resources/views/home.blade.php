@@ -217,7 +217,7 @@
                     @foreach ($reviews as $review)
                         <div class="p-3 mb-4 border rounded shadow-sm review-item">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h4 class="mb-1">{{ $review->name }}</h4>
+                                <h4 class="mb-1">{{ $review->user->name }}</h4>
                                 <div class="rating">
                                     @for ($i = 1; $i <= 5; $i++)
                                         <span class="star {{ $i <= $review->rating ? 'filled' : '' }}">&#9733;</span>
