@@ -5,7 +5,7 @@
         <div class="agileinfo-dot">
             @include('layouts.header')
             <div class="wthree-heading">
-                <h2 style="color: white">Book Service</h2>
+                <h2 style="color: white">Book Services</h2>
             </div>
         </div>
     </div>
@@ -67,6 +67,10 @@
                                 <div class="col-md-10">
                                     <textarea class="form-control" name="message" required></textarea>
                                 </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-md-10">Harga layanan {{ $service->name }} = {{ $service->price }}</label>
                             </div>
 
                             <div class="form-group row">
