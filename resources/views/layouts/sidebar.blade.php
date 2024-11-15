@@ -87,8 +87,8 @@
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i
                                 class="si si-energy"></i><span class="sidebar-mini-hide">Type of Events</span></a>
                         <ul>
-                            <li><a href="{{ route('admin.event-types.create') }}">Add Event Types</a></li>
-                            <li><a href="{{ route('admin.event-types.index') }}">Manage Event Types</a></li>
+                            <li><a href="{{ route('admin.event-types.create') }}">Add Category</a></li>
+                            <li><a href="{{ route('admin.event-types.index') }}">Manage Category</a></li>
                         </ul>
                     </li>
 

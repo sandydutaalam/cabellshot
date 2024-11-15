@@ -20,7 +20,11 @@ class HomeController extends Controller
     public function service()
     {
         $services = Service::all();
-        return view('services', compact('services'));
+        $event_types = EventType::all();
+
+        // dd($event_types);
+
+        return view('services', compact('services','event_types'));
     }
 
     public function about()
@@ -58,7 +62,7 @@ class HomeController extends Controller
     public function filterByEventType($eventType)
     {
         // Ambil tipe acara dari database
-        $eventType = EventType::where('type', $eventType)->firstOrFail();
+        $eventType = EventType::where('id', $eventType)->firstOrFail();
 
         // Ambil layanan yang terkait dengan tipe acara tersebut
         $services = Service::where('event_type_id', $eventType->id)->get();

@@ -5,12 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\EventType;
 use App\Models\Photographer;
+use App\Services\FileService;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 
+
 class EventTypeController extends Controller
 {
+
+    protected $fileService;
+    public function __construct(FileService $fileService)
+    {
+        $this->fileService = $fileService;
+    }
     public function index()
     {
         $event_types = EventType::all(); // Fetch all event types
@@ -26,12 +34,25 @@ class EventTypeController extends Controller
     {
         try {
             $request->validate([
-                'type' => 'required|string|max:255', // Validate event type
+                'type' => 'required|string|max:255',
+                'categoryImage' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Validate event type
             ]);
 
-            EventType::create([
-                'type' => $request->type, // Store event type
-            ]);
+            // Handle the image upload
+            $fileName = null;
+            if ($request->hasFile('categoryImage')) {
+                $fileName = $this->fileService->uploadFile($request->file('categoryImage'));
+            }
+
+            // Store Event type details
+            $event_type = new EventType();
+            $event_type->category_img = $fileName;
+            $event_type->type = $request->input('type');
+            $event_type->save();
+
+            // EventType::create([
+            //     'type' => $request->type,
+            // ]); tidak dipkaai karena berubah menjadi ada kolom gambar
 
             return redirect()->route('admin.event-types.index')->with('success', 'Berhasil membuat Event Type!');
         } catch (Exception $e) {
@@ -101,5 +122,40 @@ class EventTypeController extends Controller
 
         return redirect()->route('admin.event-types.detail', $event_id)
             ->with('success', 'Photographer removed successfully!');
+    }
+
+    public function edit($id)
+    {
+        $event_type = EventType::find($id);
+        return view('admin.event-types.edit', compact('event_type'));
+    }
+
+    public function update(Request $request, $id)
+
+    {
+        try {
+            // Validate the request
+            $request->validate([
+                'type' => 'required|string|max:200',
+                'categoryImage' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+        ]);
+
+        $event_type = EventType::find($id);
+
+        // Handle the image replacement
+        if ($request->hasFile('categoryImage')) {
+            $newFileName = $this->fileService->replaceFile($request->file('categoryImage'), $event_type->category_img);
+            $event_type->category_img = $newFileName;
+        }
+
+        // Update service details
+        $event_type->type = $request->input('type');
+        $event_type->save();
+
+        return redirect()->route('admin.event-types.index')->with('success', 'Category updated successfully!');
+
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', 'Failed to update Category: ' . $e->getMessage());
+        }
     }
 }

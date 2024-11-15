@@ -93,6 +93,8 @@ Route::middleware(['auth'])->group(callback: function () {
             Route::delete('removePhotographer/{event_id}/{id}', 'removePhotographer')->name('removePhotographer');
 
             Route::get('/create', 'create')->name('create');
+            Route::get('/{id}/edit', 'edit')->name('edit');
+            Route::put('/{id}',  'update')->name('update');
             Route::post('/', 'store')->name('store');
             Route::delete('/{id}', 'destroy')->name('destroy');
         });

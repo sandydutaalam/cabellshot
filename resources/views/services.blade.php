@@ -30,14 +30,17 @@
                 <div class="wthree-services-bottom-grids">
                     <p class="wow fadeInUp animated" data-wow-delay=".5s">Select a service category.</p>
                     <div class="mt-5 row" style="display: flex; flex-wrap: wrap; justify-content: center;">
-                        @foreach (['Sports', 'Wedding', 'Event'] as $type)
+                        @foreach ($event_types as $event_type)
+                            
                             <div style="margin: 20px;">
-                                <a href="{{ route('services.filter', $type) }}"
+                                <a href="{{ route('services.filter', $event_type->id) }}"
                                     style="text-decoration: none; color: inherit;">
+                                    @if ($event_type->category_img)
                                     <div class="service-card"
                                         style="width: 300px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s; display: flex; flex-direction: column; align-items: center;">
+                                        <img src="{{ asset($event_type->category_img) }}"alt="{{ $event_type->type }} Image" style="width: 100%; height: 200px; object-fit: cover;">
 
-                                        @if ($type == 'Sports')
+                                        {{-- @if ($type == 'Sports')
                                             <img src="https://asset-a.grid.id/crop/0x0:0x0/x/photo/2023/06/13/ezgifcom-gif-makerjpg-20230613093534.jpg"
                                                 alt="{{ $type }} Image"
                                                 style="width: 100%; height: 200px; object-fit: cover;">
@@ -49,15 +52,24 @@
                                             <img src="https://youngontop.com/wp-content/uploads/2024/09/63ecdf6e6df724eab1f0e8ca_20230215T0132-25bece5c-5ab8-4c33-98c7-60ad2668054b.webp"
                                                 alt="{{ $type }} Image"
                                                 style="width: 100%; height: 200px; object-fit: cover;">
-                                        @endif
+                                        @elseif ($type == 'Event')
+                                            <img src="https://youngontop.com/wp-content/uploads/2024/09/63ecdf6e6df724eab1f0e8ca_20230215T0132-25bece5c-5ab8-4c33-98c7-60ad2668054b.webp"
+                                                    alt="{{ $type }} Image"
+                                                    style="width: 100%; height: 200px; object-fit: cover;">
+                                        @endif --}}
 
+                                        @else
+                                        <p>no image</p>
+                                        @endif
                                         <div class="card-body" style="padding: 15px; text-align: center;">
-                                            <h5 class="card-title" style="margin: 0; font-size: 24px;">{{ $type }}
+                                            <h5 class="card-title" style="margin: 0; font-size: 24px;">{{ $event_type->type }}
                                             </h5>
                                         </div>
                                     </div>
+                                    
                                 </a>
                             </div>
+                             
                         @endforeach
                     </div>
                 </div>
