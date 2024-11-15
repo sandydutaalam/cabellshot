@@ -67,7 +67,7 @@ class BookController extends Controller
             'photographer_id' => 'required|integer',
             'number_of_guest' => 'required|integer',
             'message' => 'required|string',
-            'payment_proof' => 'required|mimes:jpeg,jpg,png,gif|max:2048'
+            'payment_proof' => 'required|mimes:jpeg,jpg,png,pdf|max:2048'
         ]);
 
         $service = Service::findOrFail($service_id);  // Ensure valid service is retrieved or fail gracefully

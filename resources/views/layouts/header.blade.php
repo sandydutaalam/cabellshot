@@ -40,9 +40,9 @@
                                             <li><a class="hvr-bounce-to-bottom"
                                                     href="{{ route('booking.history') }}">Booking
                                                     History</a></li>
-                                            {{-- <li><a class="hvr-bounce-to-bottom"
+                                            <li><a class="hvr-bounce-to-bottom"
                                                     href="{{ route('change-password') }}">Change
-                                                    Password</a></li> --}}
+                                                    Password</a></li>
                                             <li>
                                                 <form action="{{ route('logout') }}" method="POST">
                                                     @csrf

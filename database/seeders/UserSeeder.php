@@ -27,9 +27,9 @@ class UserSeeder extends Seeder
                 'role' => 'user', // Menandakan sebagai pengguna biasa
             ],
             [
-                'name' => 'hkjhkj',
+                'name' => 'Duta',
                 'phone_number' => '4579878687',
-                'email' => 'rewrewre@yutuy',
+                'email' => 'duta@gmail.com',
                 'password' => Hash::make('password'),
                 'role' => 'user',
             ],
@@ -49,9 +49,9 @@ class UserSeeder extends Seeder
                 'role' => 'user',
             ],
             [
-                'name' => 'Azka Zaviar',
+                'name' => 'Azkaban',
                 'phone_number' => '1236985211',
-                'email' => 'azka@gmail.com',
+                'email' => 'azkaban@gmail.com',
                 'password' => Hash::make('password'),
                 'role' => 'user',
             ],

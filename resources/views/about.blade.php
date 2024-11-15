@@ -5,7 +5,7 @@
         <div class="agileinfo-dot">
             @include('layouts.header')
             <div class="wthree-heading">
-                <h2 style="color: white">Login</h2>
+                <h2 style="color: white">About</h2>
             </div>
         </div>
     </div>
