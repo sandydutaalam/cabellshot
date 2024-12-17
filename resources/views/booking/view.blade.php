@@ -133,6 +133,8 @@
                                      <span class="badge badge-warning">No Processed yet</span>
                                  @elseif($booking->status == 'Approved')
                                      <span class="badge badge-success">{{ $booking->status }}</span>
+                                 @elseif($booking->status == 'On Process')
+                                     <span class="badge badge-success">{{ $booking->status }}</span>
                                  @elseif($booking->status == 'Cancelled')
                                      <span class="badge badge-danger">{{ $booking->status }}</span>
                                  @endif
@@ -142,6 +144,8 @@
                          </tr>
                      </table>
                  </div>
+
+                 {{-- <a href="{{ url('/booking/view/{id}/pdf') }}" class="btn btn-primary">View</a> --}}
  
                  @if ($booking->is_reviewed == false && $booking->status == 'Approved')
                      <!-- Button to Open the Review Modal -->

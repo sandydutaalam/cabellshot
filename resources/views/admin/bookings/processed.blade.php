@@ -2,18 +2,18 @@
 
 @section('content')
     <div class="content">
-        <h2 class="content-heading">Total Booking</h2>
+        <h2 class="content-heading">Processed Booking</h2>
 
         <!-- Dynamic Table Full Pagination -->
         <div class="block">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Total Booking</h3>
+                <h3 class="block-title">Processed Booking</h3>
             </div>
             <div class="block-content block-content-full">
                 <table class="table table-bordered table-striped table-vcenter js-dataTable-full-pagination">
                     <thead>
                         <tr>
-                            <th class="text-center">-</th>
+                            <th class="text-center"></th>
                             <th>Booking ID</th>
                             <th class="d-none d-sm-table-cell">Customer Name</th>
                             <th class="d-none d-sm-table-cell">Mobile Number</th>
@@ -24,7 +24,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($allBookings as $index => $booking)
+                        @foreach ($processedBookings as $index => $booking)
                             <tr>
                                 <td class="text-center">{{ $index + 1 }}</td>
                                 <td class="font-w600">{{ $booking->id }}</td>
@@ -35,19 +35,21 @@
                                     <span class="badge badge-primary">{{ $booking->booking_date }}</span>
                                 </td>
                                 <td class="font-w600">
-                                    @if ($booking->status == 'Pending')
+                                    @if ($booking->status == '')
                                         <span class="badge badge-warning">Not Processed Yet</span>
-                                    @elseif ($booking->status == 'On Process')
-                                        <span class="badge badge-primary">{{ $booking->status }}</span>
                                     @elseif ($booking->status == 'Approved')
+                                        <span class="badge badge-success">{{ $booking->status }}</span>
+                                    @elseif ($booking->status == 'On Process')
                                         <span class="badge badge-success">{{ $booking->status }}</span>
                                     @elseif ($booking->status == 'Cancelled')
                                         <span class="badge badge-danger">{{ $booking->status }}</span>
                                     @endif
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    <a href="{{ route('admin.bookings.detail', $booking->id) }}" class="btn btn-primary"
-                                        target="_blank">View</a>
+                                    <button class="text-center btn btn-primary">
+                                        <a class="text-white" href="{{ route('admin.bookings.detail', $booking->id) }}"
+                                            target="_blank">View</a>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
@@ -55,5 +57,6 @@
                 </table>
             </div>
         </div>
+        <!-- END Dynamic Table Full Pagination -->
     </div>
 @endsection

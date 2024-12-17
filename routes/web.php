@@ -13,6 +13,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\FilterDateController;
 use App\Http\Controllers\PhotograperController;
 use App\Http\Controllers\SearchBookingController;
@@ -49,6 +50,9 @@ Route::middleware(['auth'])->group(callback: function () {
     Route::get('/bookings/create/{id}', [BookController::class, 'create'])->name('booking.create');
     Route::post('/booking/store/{id}', [BookController::class, 'store'])->name('booking.store');
     Route::get('/booking/view/{id}', [BookController::class, 'view'])->name('booking.view');
+    Route::get('/booking/view/{id}/pdf', [BookController::class, 'view_pdf'])->name('booking.view_pdf');
+
+
 
     Route::post('review/{bookingId}', [BookController::class, 'review'])->name('review.store');
     // Route::get('/cities', [CityController::class, 'index'])->name('cities');
@@ -115,8 +119,22 @@ Route::middleware(['auth'])->group(callback: function () {
             Route::get('/new', 'new')->name('new');
             Route::get('/approved', 'approved')->name('approved');
             Route::get('/cancelled', 'cancelled')->name('cancelled');
-            Route::get('/detail/{id}', 'detail')->name('detail');
+            Route::get('/processed', 'processed')->name('processed');
+            Route::get('/detail/{id}', 'detail')->name(name: 'detail');
             Route::put('/update/{id}', 'update')->name('update');
+            Route::get('/report', 'report')->name('report');
+            Route::get('/report/view_pdf', 'view_pdf')->name('view_pdf');
+
+        });
+
+        // Payment
+        Route::controller(PaymentController::class)->prefix('payments')->name('payments.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::put('/update/{id}', 'update')->name('update');
+            Route::delete('/{id}', 'destroy')->name('destroy');
         });
 
         // Contact
@@ -138,4 +156,7 @@ Route::middleware(['auth'])->group(callback: function () {
             Route::get('/', 'index')->name('index');
         });
     });
+// php artisan route:clear
+// php artisan cache:clear
+// php artisan route:list
 });

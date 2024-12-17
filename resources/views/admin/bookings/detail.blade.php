@@ -59,6 +59,8 @@
                                     <span class="badge badge-success">{{ $booking->status }}</span>
                                 @elseif($booking->status == 'Cancelled')
                                     <span class="badge badge-danger">{{ $booking->status }}</span>
+                                @elseif($booking->status == 'On Process')
+                                    <span class="badge badge-success">{{ $booking->status }}</span>
                                 @endif
                             </td>
                             <th>Admin Remark</th>
@@ -97,7 +99,14 @@
 
                     </table>
 
-                    @if ($booking->status == 'Pending')
+                    {{-- @if ($booking->status == 'Pending')
+                        <p align="center" style="padding-top: 20px">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Take
+                                Action</button>
+                        </p>
+                    @endif --}}
+
+                    @if (in_array($booking->status, ['Pending','On Process']))
                         <p align="center" style="padding-top: 20px">
                             <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Take
                                 Action</button>
@@ -130,6 +139,7 @@
                                                 <td>
                                                     <select name="status" class="form-control" required>
                                                         <option value="Approved" selected>Approved</option>
+                                                        <option value="On Process">Process</option>
                                                         <option value="Cancelled">Cancelled</option>
                                                     </select>
                                                 </td>

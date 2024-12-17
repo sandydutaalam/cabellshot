@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Models\EventType;
 use App\Models\Review;
+use App\Models\Payment;
 use App\Models\Service;
 use App\Services\FileService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 
 class BookController extends Controller
 {
@@ -27,12 +30,13 @@ class BookController extends Controller
         return view('booking.history', compact('bookings'));
     }
 
-    public function view($bookingid)
+    public function view($id)
     {
+        
         $user = Auth::user();
         $booking = Booking::with('user', 'service')
             ->where('user_id', $user->id)
-            ->where('id', $bookingid)
+            ->where('id', $id)
             ->first(); // Ambil booking yang sesuai
 
         if (!$booking) {
@@ -41,6 +45,24 @@ class BookController extends Controller
 
         return view('booking.view', compact('booking'));
     }
+
+    // public function view_pdf($id)
+    // {
+    //     $user = Auth::user();
+    //     $booking = Booking::with('user', 'service')
+    //         ->where('user_id', $user->id)
+    //         ->where('id', $id)
+    //         ->first();
+    
+    //     if (!$booking) {
+    //         return redirect()->route('booking.history')->with('error', 'Booking not found.');
+    //     }
+    
+    //     $mpdf = new \Mpdf\Mpdf();
+    //     $html = view('booking.view_pdf', compact('booking'))->render();
+    //     $mpdf->WriteHTML($html);
+    //     $mpdf->Output();
+    // }
 
 
 
@@ -55,7 +77,9 @@ class BookController extends Controller
         // get photographer by event type
         $photographers = $event_type->photographers;
 
-        return view('booking.create', compact('photographers',  'service'));
+        // $payment_proof_types = Payment::distinct()->pluck('payment_proof_type','id'); // Mengambil data unik
+
+        return view('booking.create', compact('photographers',  'service', ));
     }
 
 
@@ -67,8 +91,18 @@ class BookController extends Controller
             'photographer_id' => 'required|integer',
             'number_of_guest' => 'required|integer',
             'message' => 'required|string',
+            // 'payment_proof_type' => 'required|string', 
             'payment_proof' => 'required|mimes:jpeg,jpg,png,pdf|max:2048'
         ]);
+
+        // Cek jumlah pemesanan fotografer hari ini
+        $todayBookings = Booking::where('photographer_id', $request->photographer_id)
+            ->whereDate('booking_date', Carbon::today())
+            ->count();
+
+        if ($todayBookings >= 4) {
+        return back()->withErrors(['photographer' => 'Fotografer sudah mencapai batas pemesanan hari ini.']);
+        }
 
         $service = Service::findOrFail($service_id);  // Ensure valid service is retrieved or fail gracefully
         // Handle file upload using FileService
@@ -87,11 +121,14 @@ class BookController extends Controller
             'booking_date' => $request->booking_date,
             'event_type_id' => $service->event_type_id,
             'number_of_guest' => $request->number_of_guest,
-
+            // 'payment_proof_type' => $request->input('$payment_proof_type'),
             'message' => $request->message,
             'payment_proof' => $paymentProofPath,
             'status' => 'Pending'
         ]);
+
+        // dd(vars: $request->all());
+
 
         return redirect()->route('booking.history')->with('success', 'Your booking has been placed successfully.');
     }

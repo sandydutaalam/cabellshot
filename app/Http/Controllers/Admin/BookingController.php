@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB; 
 
 class BookingController extends Controller
 {
@@ -13,6 +15,53 @@ class BookingController extends Controller
     {
         $allBookings = Booking::with('user')->get(); // Ambil semua booking dengan data user
         return view('admin.bookings.all', compact('allBookings'));
+    }
+    public function report()
+    {
+        $allBookings = Booking::with('user')->get(); // Ambil semua booking dengan data user
+
+        $totalIncome = Booking::where('status', 'Approved')
+                        ->join('services', 'bookings.service_id', '=', 'services.id')
+                        ->sum('services.price');
+        
+        $allServices = Service::all();
+
+        $bookingCounts = Booking::where('status','Approved')
+                            ->select('service_id', DB::raw('COUNT(*) as count'))
+                            ->groupBy('service_id')
+                            ->pluck('count', 'service_id');
+
+        $serviceIncomes = Booking::where('status', 'Approved')
+                            ->join('services', 'bookings.service_id', '=', 'services.id')
+                            ->select('bookings.service_id', 'services.name', DB::raw('SUM(services.price) as total_income'))
+                            ->groupBy('bookings.service_id', 'services.name')
+                            ->pluck('total_income', 'bookings.service_id');
+
+        return view('admin.bookings.report', compact(['allBookings','totalIncome','allServices','bookingCounts','serviceIncomes']));
+    }
+
+    public function view_pdf()
+    {
+        $allBookings = Booking::with('user')->get(); // Ambil semua booking dengan data user
+
+        $totalIncome = Booking::where('status', 'Approved')
+                        ->join('services', 'bookings.service_id', '=', 'services.id')
+                        ->sum('services.price');
+        
+        $allServices = Service::all();
+
+        $bookingCounts = Booking::where('status','Approved')
+                            ->select('service_id', DB::raw('COUNT(*) as count'))
+                            ->groupBy('service_id')
+                            ->pluck('count', 'service_id');
+
+        $serviceIncomes = Booking::where('status', 'Approved')
+                            ->join('services', 'bookings.service_id', '=', 'services.id')
+                            ->select('bookings.service_id', 'services.name', DB::raw('SUM(services.price) as total_income'))
+                            ->groupBy('bookings.service_id', 'services.name')
+                            ->pluck('total_income', 'bookings.service_id');
+
+        return view('admin.bookings.view_pdf', compact(['allBookings','totalIncome','allServices','bookingCounts','serviceIncomes']));
     }
 
     // Menampilkan booking yang baru
@@ -24,16 +73,25 @@ class BookingController extends Controller
 
     // Menampilkan booking yang disetujui
     public function approved()
-    {
-        $approvedBookings = Booking::with('user')->where('Status', 'Approved')->get(); // Ambil booking yang disetujui
-        return view('admin.bookings.approve', compact('approvedBookings'));
-    }
+{
+    $approvedBookings = Booking::with('user')
+        ->where('Status', 'Approved')
+        ->orderBy('created_at', 'desc') // Urutkan berdasarkan kolom created_at secara descending
+        ->get();
+    return view('admin.bookings.approve', compact('approvedBookings'));
+}   
 
     // Menampilkan booking yang dibatalkan
     public function cancelled()
     {
         $cancelledBookings = Booking::with('user')->where('Status', 'Cancelled')->get(); // Ambil booking yang dibatalkan
         return view('admin.bookings.cancelled', compact('cancelledBookings'));
+    }
+
+    public function processed()
+    {
+        $processedBookings = Booking::with('user')->where('Status', 'On Process')->get(); // Ambil booking yang dikerjakan
+        return view('admin.bookings.processed', compact('processedBookings'));
     }
 
     public function detail($id)
@@ -53,7 +111,7 @@ class BookingController extends Controller
     {
         $request->validate([
             'remark' => 'required|string|max:255',
-            'status' => 'required|string|in:Approved,Cancelled',
+            'status' => 'required|string|in:Approved,Cancelled,On Process',
         ]);
 
         // Update status dan remark

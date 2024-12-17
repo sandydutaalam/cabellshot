@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\EventType;
 use App\Models\Photographer;
 use App\Services\FileService;
+use Carbon\Carbon;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -54,9 +55,9 @@ class EventTypeController extends Controller
             //     'type' => $request->type,
             // ]); tidak dipkaai karena berubah menjadi ada kolom gambar
 
-            return redirect()->route('admin.event-types.index')->with('success', 'Berhasil membuat Event Type!');
+            return redirect()->route('admin.event-types.index')->with('success', 'Berhasil membuat Kategori baru!');
         } catch (Exception $e) {
-            return redirect()->back()->with('error', 'Gagal membuat Event Type: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Gagal membuat Kategori: ' . $e->getMessage());
         }
     }
 
@@ -66,9 +67,9 @@ class EventTypeController extends Controller
             $eventType = EventType::findOrFail($id); // Find event type or fail
             $eventType->delete(); // Delete the event type
 
-            return redirect()->route('admin.event-types.index')->with('success', 'Berhasil menghapus Event Type!');
+            return redirect()->route('admin.event-types.index')->with('success', 'Berhasil menghapus Kategori!');
         } catch (Exception $e) {
-            return redirect()->back()->with('error', 'Gagal menghapus Event Type: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Gagal menghapus Kategori: ' . $e->getMessage());
         }
     }
 

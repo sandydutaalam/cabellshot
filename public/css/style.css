@@ -20,7 +20,7 @@ body{
 }
 /*-- banner --*/
 .banner{
-    background: url(../images/IMG_1916.PNG) no-repeat 0px 147px;
+    background: url(../images/bgnew1.jpg) no-repeat 0px 147px;
     background-size: cover;
 }
 .agileinfo-dot {
@@ -252,7 +252,7 @@ ul.dropdown-menu {
 .w3l-banner-text {
     border: solid 10px #000000;
     padding: 4em 2em;
-    border-image: url(../images/3.jpg) 30 round;
+    border-image: url(../images/bgnew1.jpg) 30 round;
 }
 .w3l-banner-text h2{
 	color: #000000;

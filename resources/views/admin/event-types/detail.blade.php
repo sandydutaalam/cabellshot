@@ -26,7 +26,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Photographer Name</th>
-                                    <th>Email</th>
+                                    {{-- <th>Email</th> --}}
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -35,7 +35,7 @@
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $photographer->name }}</td>
-                                        <td>{{ $photographer->email }}</td>
+                                        {{-- <td>{{ $photographer->email }}</td> --}}
                                         <td>
                                             <form
                                                 action="{{ route('admin.event-types.removePhotographer', [$event_type->id, $photographer->id]) }}"

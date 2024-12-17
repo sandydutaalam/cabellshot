@@ -42,11 +42,20 @@
                                     {{-- <td class="font-w600">
                                         <span class="badge badge-primary">{{ $booking->booking_to }}</span>
                                     </td> --}}
-                                    <td class="d-none d-sm-table-cell">
-                                        @if (!$booking->status)
+                                    {{-- <td class="d-none d-sm-table-cell">
+                                        @if (!$booking->status == 'Pending')
                                             <span class="font-w600">Not Updated Yet</span>
                                         @else
                                             <span class="badge badge-primary">{{ $booking->status }}</span>
+                                        @endif
+                                    </td> --}}
+                                    <td class="d-none d-sm-table-cell">
+                                        @if ($booking->status == 'Pending')
+                                            <span class="badge badge-warning">Not Updated Yet</span>
+                                        @elseif ($booking->status == 'Approved')
+                                            <span class="badge badge-success">{{ $booking->status }}</span>
+                                        @elseif ($booking->status == 'Cancelled')
+                                            <span class="badge badge-danger">{{ $booking->status }}</span>
                                         @endif
                                     </td>
                                     <td class="d-none d-sm-table-cell">

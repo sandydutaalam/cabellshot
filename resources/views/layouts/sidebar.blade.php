@@ -78,14 +78,14 @@
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i
                                 class="si si-puzzle"></i><span class="sidebar-mini-hide">Services</span></a>
                         <ul>
-                            <li><a href="{{ route('admin.services.create') }}">Add Services</a></li>
-                            <li><a href="{{ route('admin.services.index') }}">Manage Services</a></li>
+                            <li><a href="{{ route('admin.services.create') }}">Add Service</a></li>
+                            <li><a href="{{ route('admin.services.index') }}">Manage Service</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i
-                                class="si si-energy"></i><span class="sidebar-mini-hide">Type of Events</span></a>
+                                class="si si-energy"></i><span class="sidebar-mini-hide">Categories</span></a>
                         <ul>
                             <li><a href="{{ route('admin.event-types.create') }}">Add Category</a></li>
                             <li><a href="{{ route('admin.event-types.index') }}">Manage Category</a></li>
@@ -105,10 +105,11 @@
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-note"></i><span
                                 class="sidebar-mini-hide">Booking</span></a>
                         <ul>
+                            <li><a href="{{ route('admin.bookings.all') }}">All Booking</a></li>
                             <li><a href="{{ route('admin.bookings.new') }}">New Booking</a></li>
                             <li><a href="{{ route('admin.bookings.approved') }}">Approved Booking</a></li>
                             <li><a href="{{ route('admin.bookings.cancelled') }}">Cancelled Booking</a></li>
-                            <li><a href="{{ route('admin.bookings.all') }}">All Booking</a></li>
+                            <li><a href="{{ route('admin.bookings.processed') }}">On Process Booking</a></li>
                         </ul>
                     </li>
 
@@ -126,15 +127,45 @@
                         </ul>
                     </li>
 
-                    {{-- <li>
-                        <a href="{{ route('admin.filter-date.index') }}"><i class="si si-vector"></i><span
-                                class="sidebar-mini-hide">B/w Dates Report</span></a>
+                    
+                    {{-- payment
+                    <li>
+                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-note"></i><span
+                                class="sidebar-mini-hide">Payment</span></a>
+                        <ul>
+                            <li><a href="{{ route('admin.payments.index') }}">All Payment</a></li>
+                            
+                        </ul>
+                        <ul>
+                            <li><a href="{{ route('admin.payments.create') }}">Add Payment</a></li>
+                            
+                        </ul>
                     </li> --}}
 
+                    
+                    {{-- filtering by dates --}}
+                    <li>
+                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-vector"></i><span
+                        class="sidebar-mini-hide">Report </span></a>
+                        <ul>
+                            <li><a href="{{ route('admin.bookings.report') }}">Booking Report</a></li>
+                            <li><a href="{{ route('admin.filter-date.index') }}">Dates Report</a></li>
+                        </ul>
+                        
+                    </li>
+
+                    
+                    {{-- search by name --}}
                     <li>
                         <a href="{{ route('admin.search-booking.index') }}"><i class="si si-magnifier"></i><span
                                 class="sidebar-mini-hide">Booking Search</span></a>
                     </li>
+
+                    {{-- <li>
+                        <a href="{{ route('admin.report.index') }}"><i class="si si-magnifier"></i><span
+                                class="sidebar-mini-hide">Report</span></a>
+                    </li> --}}
+
                 </ul>
             </div>
             <!-- END Side Navigation -->

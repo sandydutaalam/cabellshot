@@ -1,0 +1,6 @@
+{
+    "watch": ["routes/web.php", "routes/api.php"],
+    "ext": "php",
+    "exec": "php artisan routes:refresh"
+  }
+  

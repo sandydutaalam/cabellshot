@@ -19,6 +19,7 @@
                             <th class="d-none d-sm-table-cell">Mobile Number</th>
                             <th class="d-none d-sm-table-cell">Email</th>
                             <th class="d-none d-sm-table-cell">Booking Date</th>
+                            <th class="d-none d-sm-table-cell">Booking Apply</th>
                             <th class="d-none d-sm-table-cell">Status</th>
                             <th class="d-none d-sm-table-cell" style="width: 15%;">Action</th>
                         </tr>
@@ -33,6 +34,9 @@
                                 <td class="font-w600">{{ $booking->user->email }}</td>
                                 <td class="font-w600">
                                     <span class="badge badge-primary">{{ $booking->booking_date }}</span>
+                                </td>
+                                <td class="font-w600">
+                                    <span class="badge badge-primary">{{ $booking->updated_at }}</span>
                                 </td>
                                 <td class="font-w600">
                                     @if ($booking->status == '')

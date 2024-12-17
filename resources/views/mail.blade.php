@@ -14,8 +14,10 @@
             <div class="agile-contact-form">
                 <div class="col-md-6 contact-form-left">
                     <div class="w3layouts-contact-form-top">
-                        <h3>Get in touch</h3>
+                        <h3>{{ $page->title }}</h3>
+                        {{-- <p>Get in touch</p> --}}
                         <p>Kami di Cabell Shot sangat ingin mendengar dari Anda! Apakah Anda memiliki pertanyaan?</p>
+                        
                     </div>
 
                     <div class="agileits-contact-address">

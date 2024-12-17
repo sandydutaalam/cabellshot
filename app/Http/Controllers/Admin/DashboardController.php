@@ -15,7 +15,7 @@ class DashboardController extends Controller
     public function index()
     {
         // Fetching statistics
-        $totalUnreadQueries = Contact::whereNull('is_read')->count();
+        $totalUnreadQueries = Contact::where('is_read','0')->count();
         $totalReadQueries = Contact::where('is_read', '1')->count();
         $totalNewBookings = Booking::whereNull('status')->count();
         $allBookings = Booking::count();
